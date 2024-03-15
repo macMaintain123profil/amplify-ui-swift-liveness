@@ -5,9 +5,12 @@
 // SPDX-License-Identifier: Apache-2.0
 //
 
+#if canImport(SwiftUI)
 import SwiftUI
+#endif
 import FaceLiveness
 
+@available(iOS 14.0, *)
 struct ExampleLivenessView: View {
     @Binding var isPresented: Bool
     @ObservedObject var viewModel: ExampleLivenessViewModel

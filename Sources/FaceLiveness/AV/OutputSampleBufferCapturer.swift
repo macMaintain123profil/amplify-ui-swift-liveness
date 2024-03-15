@@ -8,6 +8,7 @@
 import AVFoundation
 import CoreImage
 
+@available(iOS 14.0, *)
 class OutputSampleBufferCapturer: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
     let faceDetector: FaceDetector
     let videoChunker: VideoChunker

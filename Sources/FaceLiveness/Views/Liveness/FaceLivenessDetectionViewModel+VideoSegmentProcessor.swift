@@ -7,6 +7,7 @@
 
 import Foundation
 
+@available(iOS 14.0, *)
 extension FaceLivenessDetectionViewModel: VideoSegmentProcessor {
     func process(initalSegment: Data, currentSeparableSegment: Data) {
         let chunk = chunk(initial: initalSegment, current: currentSeparableSegment)

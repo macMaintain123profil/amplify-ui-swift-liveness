@@ -6,11 +6,14 @@
 //
 
 import Foundation
+#if canImport(SwiftUI)
 import SwiftUI
+#endif
 @_spi(PredictionsFaceLiveness) import AWSPredictionsPlugin
 
 fileprivate let initialFaceDistanceThreshold: CGFloat = 0.32
 
+@available(iOS 14.0, *)
 extension FaceLivenessDetectionViewModel: FaceDetectionResultHandler {
     func process(newResult: FaceDetectionResult) {
         switch newResult {

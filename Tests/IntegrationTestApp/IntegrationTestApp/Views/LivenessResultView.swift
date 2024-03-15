@@ -5,8 +5,11 @@
 // SPDX-License-Identifier: Apache-2.0
 //
 
+#if canImport(SwiftUI)
 import SwiftUI
+#endif
 
+@available(iOS 14.0, *)
 struct LivenessResultView<Content: View>: View {
     let title: String
     let sessionID: String
@@ -134,6 +137,7 @@ extension LivenessResultView where Content == LivenessResultContentView {
     }
 }
 
+@available(iOS 14.0, *)
 struct LivenessCheckView_Previews: PreviewProvider {
     static let sessionID = String(UUID().uuidString.flatMap { $0.lowercased() })
     static var previews: some View {

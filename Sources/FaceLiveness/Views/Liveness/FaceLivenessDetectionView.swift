@@ -5,7 +5,10 @@
 // SPDX-License-Identifier: Apache-2.0
 //
 
+#if canImport(SwiftUI)
 import SwiftUI
+#endif
+
 import AWSClientRuntime
 import protocol AWSPluginsCore.AWSCredentialsProvider
 import AWSPredictionsPlugin
@@ -13,6 +16,7 @@ import AVFoundation
 import Amplify
 @_spi(PredictionsFaceLiveness) import AWSPredictionsPlugin
 
+@available(iOS 14.0, *)
 public struct FaceLivenessDetectorView: View {
     @StateObject var viewModel: FaceLivenessDetectionViewModel
     @Binding var isPresented: Bool

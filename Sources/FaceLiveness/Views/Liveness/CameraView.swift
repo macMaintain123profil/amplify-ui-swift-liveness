@@ -5,10 +5,13 @@
 // SPDX-License-Identifier: Apache-2.0
 //
 
+#if canImport(SwiftUI)
 import SwiftUI
+#endif
 import AVFoundation
 import AWSPredictionsPlugin
 
+@available(iOS 14.0, *)
 struct CameraView: UIViewControllerRepresentable {
     @ObservedObject var faceLivenessDetectionViewModel: FaceLivenessDetectionViewModel
 

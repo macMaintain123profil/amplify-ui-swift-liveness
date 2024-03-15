@@ -11,6 +11,7 @@ import Vision
 import Amplify
 @_spi(PredictionsFaceLiveness) import AWSPredictionsPlugin
 
+@available(iOS 14.0, *)
 final class _LivenessViewController: UIViewController {
     let viewModel: FaceLivenessDetectionViewModel
     var previewLayer: CALayer!
@@ -109,6 +110,7 @@ final class _LivenessViewController: UIViewController {
     required init?(coder: NSCoder) { fatalError() }
 }
 
+@available(iOS 14.0, *)
 extension _LivenessViewController: FaceLivenessViewControllerPresenter {
     func displaySingleFrame(uiImage: UIImage) {
         DispatchQueue.main.async {

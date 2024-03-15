@@ -6,13 +6,16 @@
 //
 
 import Foundation
+#if canImport(SwiftUI)
 import SwiftUI
+#endif
 import AVFoundation
 @_spi(PredictionsFaceLiveness) import AWSPredictionsPlugin
 
 fileprivate let videoSize: CGSize = .init(width: 480, height: 640)
 fileprivate let defaultNoFitTimeoutInterval: TimeInterval = 7
 
+@available(iOS 14.0, *)
 @MainActor
 class FaceLivenessDetectionViewModel: ObservableObject {
     @Published var readyForOval = false

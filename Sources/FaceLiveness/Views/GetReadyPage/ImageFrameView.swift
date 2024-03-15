@@ -5,8 +5,11 @@
 // SPDX-License-Identifier: Apache-2.0
 //
 
+#if canImport(SwiftUI)
 import SwiftUI
+#endif
 
+@available(iOS 14.0, *)
 struct ImageFrameView: View {
     var image: CGImage?
     
@@ -28,6 +31,7 @@ struct ImageFrameView: View {
     }
 }
 
+@available(iOS 14.0, *)
 struct ImageFrameView_Previews: PreviewProvider {
     static var previews: some View {
         ImageFrameView()

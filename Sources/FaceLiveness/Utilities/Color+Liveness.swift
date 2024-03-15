@@ -5,8 +5,11 @@
 // SPDX-License-Identifier: Apache-2.0
 //
 
+#if canImport(SwiftUI)
 import SwiftUI
+#endif
 
+@available(iOS 14.0, *)
 extension Color {
     static let livenessPrimaryBackground = Color.dynamicColors(
         light: .hex("#047D95"),

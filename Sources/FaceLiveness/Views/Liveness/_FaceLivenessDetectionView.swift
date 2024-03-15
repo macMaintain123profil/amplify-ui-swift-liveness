@@ -5,8 +5,11 @@
 // SPDX-License-Identifier: Apache-2.0
 //
 
+#if canImport(SwiftUI)
 import SwiftUI
+#endif
 
+@available(iOS 14.0, *)
 struct _FaceLivenessDetectionView<VideoView: View>: View {
     let videoView: VideoView
     @ObservedObject var viewModel: FaceLivenessDetectionViewModel

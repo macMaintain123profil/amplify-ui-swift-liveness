@@ -5,8 +5,11 @@
 // SPDX-License-Identifier: Apache-2.0
 //
 
+#if canImport(SwiftUI)
 import SwiftUI
+#endif
 
+@available(iOS 14.0, *)
 struct CameraPermissionView: View {
     @Binding var displayingCameraPermissionsNeededAlert: Bool
 
@@ -72,6 +75,7 @@ struct CameraPermissionView: View {
     }
 }
 
+@available(iOS 14.0, *)
 struct CameraPermissionView_Previews: PreviewProvider {
     static var previews: some View {
         CameraPermissionView()

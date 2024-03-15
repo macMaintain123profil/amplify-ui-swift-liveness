@@ -11,6 +11,7 @@ import Combine
 import AVFoundation
 import Amplify
 
+@available(iOS 14.0, *)
 class CameraPreviewViewModel: NSObject, ObservableObject {
     @Published var currentImageFrame: CGImage?
     @Published var buffer: CVPixelBuffer?
@@ -53,6 +54,7 @@ class CameraPreviewViewModel: NSObject, ObservableObject {
     }
 }
 
+@available(iOS 14.0, *)
 extension CameraPreviewViewModel: AVCaptureVideoDataOutputSampleBufferDelegate {
     func captureOutput(
         _ output: AVCaptureOutput,

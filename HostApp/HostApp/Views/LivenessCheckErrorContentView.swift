@@ -5,8 +5,11 @@
 // SPDX-License-Identifier: Apache-2.0
 //
 
+#if canImport(SwiftUI)
 import SwiftUI
+#endif
 
+@available(iOS 14.0, *)
 struct LivenessCheckErrorContentView: View {
     let name: String
     let description: String
@@ -25,6 +28,7 @@ struct LivenessCheckErrorContentView: View {
     }
 }
 
+@available(iOS 14.0, *)
 extension LivenessCheckErrorContentView {
     static let mock = LivenessCheckErrorContentView(
         name: "Time out",
@@ -52,6 +56,7 @@ extension LivenessCheckErrorContentView {
     )
 }
 
+@available(iOS 14.0, *)
 struct LivenessCheckErrorContentView_Previews: PreviewProvider {
     static var previews: some View {
         LivenessCheckErrorContentView.mock

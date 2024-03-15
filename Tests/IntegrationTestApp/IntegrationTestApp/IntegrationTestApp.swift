@@ -5,12 +5,15 @@
 // SPDX-License-Identifier: Apache-2.0
 //
 
+#if canImport(SwiftUI)
 import SwiftUI
+#endif
 import FaceLiveness
 import Amplify
 import AWSCognitoAuthPlugin
 import AWSAPIPlugin
 
+@available(iOS 14.0, *)
 @main
 struct IntegrationTestApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
