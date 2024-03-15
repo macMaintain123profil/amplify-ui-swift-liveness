@@ -5,8 +5,11 @@
 // SPDX-License-Identifier: Apache-2.0
 //
 
+#if canImport(SwiftUI)
 import SwiftUI
+#endif
 
+@available(iOS 14.0, *)
 struct LivenessResultContentView: View {
     @State var result: Result = .init(livenessResult: .init(auditImageBytes: nil, confidenceScore: -1, isLive: false))
     let fetchResults: () async throws -> Result
@@ -106,6 +109,7 @@ extension LivenessResultContentView {
     )
 }
 
+@available(iOS 14.0, *)
 struct LivenessResultContentView_Previews: PreviewProvider {
     static var previews: some View {
         LivenessResultContentView.mock

@@ -5,8 +5,11 @@
 // SPDX-License-Identifier: Apache-2.0
 //
 
+#if canImport(SwiftUI)
 import SwiftUI
+#endif
 
+@available(iOS 14.0, *)
 struct GetReadyPageView: View {
     let beginCheckButtonDisabled: Bool
     let onBegin: () -> Void
@@ -70,6 +73,7 @@ struct GetReadyPageView: View {
     }
 }
 
+@available(iOS 14.0, *)
 struct GetReadyPageView_Previews: PreviewProvider {
     static var previews: some View {
         GetReadyPageView(onBegin: {})

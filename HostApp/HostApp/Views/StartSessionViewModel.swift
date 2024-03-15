@@ -5,9 +5,12 @@
 // SPDX-License-Identifier: Apache-2.0
 //
 
+#if canImport(SwiftUI)
 import SwiftUI
+#endif
 import Amplify
 
+@available(iOS 14.0, *)
 class StartSessionViewModel: ObservableObject {
     @Published var presentationState: StartSessionView.PresentationState = .loading
     var window: UIWindow?

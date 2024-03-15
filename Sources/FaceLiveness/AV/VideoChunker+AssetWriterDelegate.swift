@@ -7,6 +7,7 @@
 
 import AVFoundation
 
+@available(iOS 14.0, *)
 extension VideoChunker {
     class AssetWriterDelegate: NSObject, AVAssetWriterDelegate {
         private var initialSegmentData: Data?

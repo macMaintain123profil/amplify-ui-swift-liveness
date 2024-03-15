@@ -5,10 +5,13 @@
 // SPDX-License-Identifier: Apache-2.0
 //
 
+#if canImport(SwiftUI)
 import SwiftUI
+#endif
 import FaceLiveness
 import Amplify
 
+@available(iOS 14.0, *)
 class ExampleLivenessViewModel: ObservableObject {
     @Published var presentationState = PresentationState.liveness
     let sessionID: String

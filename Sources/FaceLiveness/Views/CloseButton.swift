@@ -5,8 +5,11 @@
 // SPDX-License-Identifier: Apache-2.0
 //
 
+#if canImport(SwiftUI)
 import SwiftUI
+#endif
 
+@available(iOS 14.0, *)
 struct CloseButton: View {
     let action: () -> Void
 
@@ -26,6 +29,7 @@ struct CloseButton: View {
     }
 }
 
+@available(iOS 14.0, *)
 struct CloseButton_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {

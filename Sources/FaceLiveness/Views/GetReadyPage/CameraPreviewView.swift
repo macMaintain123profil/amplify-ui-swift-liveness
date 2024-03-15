@@ -4,9 +4,11 @@
 //
 // SPDX-License-Identifier: Apache-2.0
 //
-
+#if canImport(SwiftUI)
 import SwiftUI
+#endif
 
+@available(iOS 14.0, *)
 struct CameraPreviewView: View {
     private static let previewWidthRatio = 0.6
     private static let previewHeightRatio = 0.55
@@ -45,6 +47,7 @@ struct CameraPreviewView: View {
     }
 }
 
+@available(iOS 14.0, *)
 struct CameraPreviewView_Previews: PreviewProvider {
     static var previews: some View {
         CameraPreviewView()

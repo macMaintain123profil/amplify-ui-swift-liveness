@@ -7,6 +7,7 @@
 
 import AVFoundation
 
+@available(iOS 14.0, *)
 final class LivenessAVAssetWriter: AVAssetWriter {
     init() {
         super.init(contentType: .mpeg4Movie)

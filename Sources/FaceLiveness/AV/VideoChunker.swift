@@ -9,6 +9,7 @@ import AVFoundation
 import CoreImage
 import UIKit
 
+@available(iOS 14.0, *)
 final class VideoChunker {
     var state = State.pending
     let assetWriter: AVAssetWriter

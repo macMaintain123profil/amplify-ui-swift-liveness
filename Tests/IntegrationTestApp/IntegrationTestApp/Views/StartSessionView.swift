@@ -5,9 +5,12 @@
 // SPDX-License-Identifier: Apache-2.0
 //
 
+#if canImport(SwiftUI)
 import SwiftUI
+#endif
 import Amplify
 
+@available(iOS 14.0, *)
 struct StartSessionView: View {
     @EnvironmentObject var sceneDelegate: SceneDelegate
     @ObservedObject var viewModel = StartSessionViewModel()

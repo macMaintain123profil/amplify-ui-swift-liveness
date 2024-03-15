@@ -6,12 +6,15 @@
 //
 
 import XCTest
+#if canImport(SwiftUI)
 import SwiftUI
+#endif
 import AWSPluginsCore
 @testable import FaceLiveness
 @testable import AWSPredictionsPlugin
 @_spi(PredictionsFaceLiveness) import AWSPredictionsPlugin
 
+@available(iOS 14.0, *)
 @MainActor
 final class CredentialsProviderTestCase: XCTestCase {
     var videoChunker: VideoChunker!

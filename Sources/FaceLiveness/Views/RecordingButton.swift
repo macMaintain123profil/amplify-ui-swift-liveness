@@ -5,8 +5,11 @@
 // SPDX-License-Identifier: Apache-2.0
 //
 
+#if canImport(SwiftUI)
 import SwiftUI
+#endif
 
+@available(iOS 14.0, *)
 struct RecordingButton: View {
     var body: some View {
         VStack(alignment: .center) {
@@ -24,6 +27,7 @@ struct RecordingButton: View {
     }
 }
 
+@available(iOS 14.0, *)
 struct RecordingButton_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {

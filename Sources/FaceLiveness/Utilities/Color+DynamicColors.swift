@@ -6,8 +6,11 @@
 //
 
 import UIKit
+#if canImport(SwiftUI)
 import SwiftUI
+#endif
 
+@available(iOS 14.0, *)
 extension Color {
     static func dynamicColors(light: UIColor, dark: UIColor) -> Color {
         Color(

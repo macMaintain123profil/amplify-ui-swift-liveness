@@ -5,8 +5,11 @@
 // SPDX-License-Identifier: Apache-2.0
 //
 
+#if canImport(SwiftUI)
 import SwiftUI
+#endif
 
+@available(iOS 14.0, *)
 extension LivenessResultContentView {
     struct Result {
         let text: String
@@ -64,6 +67,7 @@ extension LivenessResultContentView {
     }
 }
 
+@available(iOS 14.0, *)
 fileprivate func colorRule(v: Double) -> (Color, Color, String) {
     let textColor, backgroundColor: Color
     let resultText: String

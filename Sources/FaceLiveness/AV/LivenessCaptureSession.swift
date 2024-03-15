@@ -8,6 +8,7 @@
 import UIKit
 import AVFoundation
 
+@available(iOS 14.0, *)
 class LivenessCaptureSession {
     let captureDevice: LivenessCaptureDevice
     private let captureQueue = DispatchQueue(label: "com.amazonaws.faceliveness.cameracapturequeue")

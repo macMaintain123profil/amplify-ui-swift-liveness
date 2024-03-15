@@ -5,11 +5,14 @@
 // SPDX-License-Identifier: Apache-2.0
 //
 
+#if canImport(SwiftUI)
 import SwiftUI
+#endif
 import protocol AWSPluginsCore.AWSCredentialsProvider
 import AVFoundation
 @testable import FaceLiveness
 
+@available(iOS 14.0, *)
 extension FaceLivenessDetectorView {
     static func getMockFaceLivenessDetectorView (
         sessionID: String,
