@@ -13,7 +13,7 @@ let package = Package(
             targets: ["FaceLiveness"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/macMaintain123profil/amplify-swift", branch: "compileiOS12")
+        .package(url: "https://github.com/macMaintain123profil/amplify-swift", branch: "compile_ios12")
     ],
     targets: [
         .target(
