@@ -120,6 +120,18 @@ public struct FaceLivenessDetectionError: Error, Equatable {
         recoverySuggestion: ""
     )
 
+    public static let invalidSignature = FaceLivenessDetectionError(
+        code: 17,
+        message: "The signature on the request is invalid.",
+        recoverySuggestion: "Ensure the device time is correct and try again."
+    )
+
+    public static let cameraNotAvailable = FaceLivenessDetectionError(
+        code: 18,
+        message: "The camera is not available.",
+        recoverySuggestion: "There might be a hardware issue."
+    )
+
     public static func == (lhs: FaceLivenessDetectionError, rhs: FaceLivenessDetectionError) -> Bool {
         lhs.code == rhs.code
     }

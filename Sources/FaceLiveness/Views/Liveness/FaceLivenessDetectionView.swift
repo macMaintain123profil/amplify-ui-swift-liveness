@@ -203,12 +203,14 @@ public struct FaceLivenessDetectorView: View {
 
     func mapError(_ livenessError: LivenessStateMachine.LivenessError) -> FaceLivenessDetectionError {
         switch livenessError {
-        case .userCancelled:
+        case .userCancelled, .viewResignation:
             return .userCancelled
         case .timedOut:
-            return .sessionTimedOut
+            return .faceInOvalMatchExceededTimeLimitError
         case .socketClosed:
             return .socketClosed
+        case .cameraNotAvailable:
+            return .cameraNotAvailable
         default:
             return .cameraPermissionDenied
         }
@@ -277,6 +279,8 @@ private func map(detectionCompletion: @escaping (Result<Void, FaceLivenessDetect
             detectionCompletion(.failure(.serviceUnavailable))
         case .failure(.sessionNotFound):
             detectionCompletion(.failure(.sessionNotFound))
+        case .failure(.invalidSignature):
+            detectionCompletion(.failure(.invalidSignature))
         default:
             detectionCompletion(.failure(.unknown))
         }
