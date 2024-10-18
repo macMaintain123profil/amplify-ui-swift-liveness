@@ -45,7 +45,7 @@ final class VideoChunker {
         state = .awaitingSingleFrame
 
         // explicitly calling `endSession` is unnecessary
-        if state != .complete {
+        if assetWriter.status != .completed {
             assetWriter.finishWriting {}
         }
     }
