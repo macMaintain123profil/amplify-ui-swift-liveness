@@ -12,7 +12,7 @@ import AVFoundation
 class LivenessCaptureSession {
     let captureDevice: LivenessCaptureDevice
     private let captureQueue = DispatchQueue(label: "com.amazonaws.faceliveness.cameracapturequeue")
-    private let configurationQueue = DispatchQueue(label: "com.amazonaws.faceliveness.sessionconfiguration", qos: .userInitiated)
+    private let configurationQueue = DispatchQueue(label: "com.amazonaws.faceliveness.sessionconfiguration", qos: .userInteractive)
     let outputDelegate: AVCaptureVideoDataOutputSampleBufferDelegate
     var captureSession: AVCaptureSession?
     
@@ -25,8 +25,8 @@ class LivenessCaptureSession {
         self.outputDelegate = outputDelegate
     }
 
-    func startSession(frame: CGRect) throws -> CALayer {
-        try startSession()
+    func configureCamera(frame: CGRect) throws -> CALayer {
+        try configureCamera()
 
         guard let captureSession = captureSession else {
             throw LivenessCaptureSessionError.captureSessionUnavailable
@@ -40,7 +40,7 @@ class LivenessCaptureSession {
         return previewLayer
     }
     
-    func startSession() throws {
+    func configureCamera() throws {
         guard let camera = captureDevice.avCaptureDevice
         else { throw LivenessCaptureSessionError.cameraUnavailable }
 
@@ -59,19 +59,21 @@ class LivenessCaptureSession {
         try setupOutput(videoOutput, for: captureSession)
         try captureDevice.configure()
 
-        configurationQueue.async {
-            captureSession.startRunning()
-        }
-
         videoOutput.setSampleBufferDelegate(
             outputDelegate,
             queue: captureQueue
         )
     }
 
+    func startSession() {
+        guard let session = captureSession else { return }
+        configurationQueue.async {
+            session.startRunning()
+        }
+    }
+
     func stopRunning() {
         guard let session = captureSession else { return }
-
         defer {
             captureSession = nil
         }

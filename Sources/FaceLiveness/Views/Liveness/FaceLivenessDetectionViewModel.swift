@@ -125,14 +125,17 @@ class FaceLivenessDetectionViewModel: ObservableObject {
         }
     }
 
+    func startSession() {
+        captureSession.startSession()
+    }
 
     func stopRecording() {
         captureSession.stopRunning()
     }
 
-    func startCamera(withinFrame frame: CGRect) -> CALayer? {
+    func configureCamera(withinFrame frame: CGRect) -> CALayer? {
         do {
-            let avLayer = try captureSession.startSession(frame: frame)
+            let avLayer = try captureSession.configureCamera(frame: frame)
             DispatchQueue.main.async {
                 self.livenessState.checkIsFacePrepared()
             }
@@ -338,8 +341,8 @@ class FaceLivenessDetectionViewModel: ObservableObject {
         switch captureSessionError {
         case LivenessCaptureSessionError.cameraUnavailable,
             LivenessCaptureSessionError.deviceInputUnavailable:
-
-            livenessError = .missingVideoPermission
+            let authStatus = AVCaptureDevice.authorizationStatus(for: .video)
+            livenessError = authStatus == .authorized ? .cameraNotAvailable : .missingVideoPermission
         case LivenessCaptureSessionError.captureSessionOutputUnavailable,
             LivenessCaptureSessionError.captureSessionInputUnavailable:
 

@@ -28,13 +28,18 @@ class CameraPreviewViewModel: NSObject, ObservableObject {
             position: .front
         ).devices.first
 
+        let outputDelegate = CameraPreviewOutputSampleBufferDelegate { [weak self] buffer in
+            self?.updateBuffer(buffer)
+        }
+
         self.previewCaptureSession = LivenessCaptureSession(
             captureDevice: .init(avCaptureDevice: avCaptureDevice),
-            outputDelegate: self
+            outputDelegate: outputDelegate
         )
         
         do {
-            try previewCaptureSession?.startSession()
+            try previewCaptureSession?.configureCamera()
+            previewCaptureSession?.startSession()
         } catch {
             Amplify.Logging.default.error("Error starting preview capture session with error: \(error)")
         }
@@ -52,19 +57,10 @@ class CameraPreviewViewModel: NSObject, ObservableObject {
     func stopSession() {
         previewCaptureSession?.stopRunning()
     }
-}
 
-@available(iOS 14.0, *)
-extension CameraPreviewViewModel: AVCaptureVideoDataOutputSampleBufferDelegate {
-    func captureOutput(
-        _ output: AVCaptureOutput,
-        didOutput sampleBuffer: CMSampleBuffer,
-        from connection: AVCaptureConnection
-    ) {
-        if let buffer = sampleBuffer.imageBuffer {
-            DispatchQueue.main.async {
-                self.buffer = buffer
-            }
+    func updateBuffer(_ buffer: CVImageBuffer) {
+        DispatchQueue.main.async {
+            self.buffer = buffer
         }
     }
 }
